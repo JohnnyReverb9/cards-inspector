@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string("full_name");
             $table->unsignedInteger("flat_num");
             $table->string("phone");
+            $table->string("alias")->nullable();
+            $table->date("expiration");
+            $table->string("passport");
+            $table->boolean("agreement")->default(false);
             $table->timestamps();
         });
     }
