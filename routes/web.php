@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ControllerCardManagement;
 use App\Http\Controllers\ControllerMainPage;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", [ControllerMainPage::class, "index"]);
-Route::get("/create_card", [ControllerCardManagement::class, "createCardPage"]);
-Route::post("/create_card", [ControllerCardManagement::class, "createCard"]);
+Route::middleware(['auth'])->group(function ()
+{
+    Route::get("/", [ControllerMainPage::class, "index"]);
+    Route::get("/create_card", [ControllerCardManagement::class, "createCardPage"]);
+    Route::post("/create_card", [ControllerCardManagement::class, "createCard"]);
+});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');

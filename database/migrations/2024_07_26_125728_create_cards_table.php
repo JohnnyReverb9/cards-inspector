@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date("expiration");
             $table->string("passport");
             $table->boolean("agreement")->default(false);
+            // $table->unsignedInteger("staff_add")->after("agreement");
             $table->timestamps();
         });
     }

@@ -6,6 +6,6 @@ class ControllerMainPage
 {
     public function index()
     {
-        return view("main_page/main_page");
+        return view("home");
     }
 }
