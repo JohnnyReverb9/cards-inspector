@@ -15,4 +15,9 @@ class ControllerCardManagement extends Controller
     {
         dd(123);
     }
+
+    public function viewCards()
+    {
+        // ...
+    }
 }

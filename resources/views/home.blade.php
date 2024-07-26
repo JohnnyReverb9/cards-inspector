@@ -23,7 +23,12 @@
                                 <h3>Выберите действие:</h3>
                             </div>
                             <div class="container">
-                                <a href="{{ url("/create_card") }}" class="btn btn-primary">Создать пропуск</a>
+                                <div class="container m-md-3">
+                                    <a href="{{ url("/view_cards") }}" class="btn btn-primary" style="width: 250px">Показать созданные пропуска</a>
+                                </div>
+                                <div class="container m-md-3">
+                                    <a href="{{ url("/create_card") }}" class="btn btn-primary" style="width: 250px">Создать пропуск</a>
+                                </div>
                             </div>
                         </div>
                 </div>

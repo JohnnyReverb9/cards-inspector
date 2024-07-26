@@ -20,8 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function ()
 {
     Route::get("/", [ControllerMainPage::class, "index"]);
+
     Route::get("/create_card", [ControllerCardManagement::class, "createCardPage"]);
     Route::post("/create_card", [ControllerCardManagement::class, "createCard"]);
+
+    Route::get("/view_cards", [ControllerCardManagement::class, "viewCards"]);
 });
 
 Auth::routes();
