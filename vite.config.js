@@ -8,6 +8,7 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
+                'resources/jquery-ui/jquery-ui.js/jquery-ui.min.js',
             ],
             refresh: true,
         }),

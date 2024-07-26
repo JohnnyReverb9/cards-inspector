@@ -13,6 +13,6 @@ class ControllerCardManagement extends Controller
 
     public function createCard(Request $request)
     {
-        // ...
+        dd(123);
     }
 }

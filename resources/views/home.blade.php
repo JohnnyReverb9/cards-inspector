@@ -17,7 +17,7 @@
 {{--                    {{ __('You are logged in!') }}--}}
                         <div class="container">
                             <div class="container">
-                                <h1>Добро пожаловать!</h1>
+                                <h1>Добро пожаловать, {{ Auth::user()->name }}!</h1>
                             </div>
                             <div class="container">
                                 <h3>Выберите действие:</h3>
