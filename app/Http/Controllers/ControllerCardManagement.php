@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Card;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ControllerCardManagement extends Controller
 {
@@ -16,24 +17,30 @@ class ControllerCardManagement extends Controller
 
     public function createCard(Request $request)
     {
-        $validated_data = $request->validate([
-            "full_name" => "required|string|min:4|max:100",
-            "flat_num" => "required|numeric|min:0|max:561",
-            "phone" => "required|string|min:18|max:18",
-            "alias" => "required|string|min:4|max:100",
-            "expiration" => "nullable|date",
-            "passport" => "string|min:6|max:10"
-        ]);
+        try {
+            $validated_data = $request->validate([
+                "full_name" => "required|string|min:4|max:100",
+                "flat_num" => "required|numeric|min:0|max:561",
+                "phone" => "required|string|min:18|max:18",
+                "alias" => "required|string|min:4|max:100",
+                "expiration" => "nullable|date",
+                "passport" => "string|min:6|max:10"
+            ]);
 
-        $additional_data = [
-            "staff_add" => Auth::user()->id
-        ];
+            $additional_data = [
+                "staff_add" => Auth::user()->id
+            ];
 
-        $res = array_merge($validated_data, $additional_data);
+            $res = array_merge($validated_data, $additional_data);
 
-        $card = Card::create($res);
+            $card = Card::create($res);
 
-        return redirect('/view_cards')->with('success', 'Карта успешно создана');
+            return redirect('/view_cards')->with('success', 'Карта успешно создана');
+        }
+        catch (\Exception $e)
+        {
+            Log::error($e->getMessage());
+        }
     }
 
     public function viewCards()
