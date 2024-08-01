@@ -24,11 +24,11 @@ class ControllerCardManagement extends Controller
                 "flat_num" => "required|numeric|min:0|max:561",
                 "phone" => "required|string|min:18|max:18",
                 "alias" => "required|string|min:4|max:100",
-                "expiration" => "nullable|date_format:Y-m-d",
+                // "expiration" => "nullable|date_format:Y-m-d",
                 "passport" => "string|min:6|max:10"
             ]);
 
-            if ($request->has("expiration") && $request->input("expiration"))
+            if ($request->has("expiration") && $request->get("expiration") != "")
             {
                 $validated_data["expiration"] = Carbon::createFromFormat("d.m.Y", $request->input("expiration"))->format("Y-m-d");
             }
