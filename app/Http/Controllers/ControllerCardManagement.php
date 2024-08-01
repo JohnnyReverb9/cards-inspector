@@ -16,8 +16,6 @@ class ControllerCardManagement extends Controller
 
     public function createCard(Request $request)
     {
-        var_dump($request->all());
-
         $validated_data = $request->validate([
             "full_name" => "required|string|min:4|max:100",
             "flat_num" => "required|numeric|min:0|max:561",
@@ -40,8 +38,9 @@ class ControllerCardManagement extends Controller
 
     public function viewCards()
     {
-        $cards = Card::all();
+        $card_list = Card::all();
 
-        return view("view_cards/view_card_list", ["cards" => $cards]);
+        // dd($card_list);
+        return view("view_cards/view_card_list", ["card_list" => $card_list]);
     }
 }
