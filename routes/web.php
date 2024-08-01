@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function ()
 {
-    Route::get("/", [ControllerMainPage::class, "index"]);
+    // Route::get("/", [ControllerMainPage::class, "index"]);
+    Route::get("/home", [ControllerMainPage::class, "index"]);
 
     Route::get("/create_card", [ControllerCardManagement::class, "createCardPage"]);
     Route::post("/create_card", [ControllerCardManagement::class, "createCard"]);
