@@ -15,7 +15,7 @@
                                     <p><strong>Номер квартиры:</strong> {{ $card->flat_num }}</p>
                                     <p><strong>Телефон:</strong> {{ $card->phone }}</p>
                                     <p><strong>Псеводним:</strong> {{ $card->alias }}</p>
-                                    <p><strong>Дата окончания:</strong> {{ $card->expiration }}</p>
+                                    <p><strong>Дата окончания:</strong>@if($card->expiration == null) Бессрочно @endif {{ $card->expiration }}</p>
                                     <p><strong>Паспорт / свидетельство о рождении:</strong> {{ $card->passport }}</p>
                                     <p><strong>Добавил сотрудник:</strong> {{ $card->staff_add }}</p>
                                 </div>
