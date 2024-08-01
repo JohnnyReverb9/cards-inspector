@@ -10,5 +10,10 @@ class Card extends Model
     use HasFactory;
 
     protected $table = 'cards';
-    protected $fillable = ["full_name", "flat_num", "phone"];
+    protected $fillable = [
+        "full_name", "flat_num",
+        "phone", "alias",
+        "expiration", "passport",
+        "staff_add"
+    ];
 }

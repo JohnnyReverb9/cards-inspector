@@ -17,6 +17,9 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6-beta.15/jquery.inputmask.min.js"></script>
+
+    <!-- Icon -->
+    <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
 </head>
 <body>
     <div id="app">

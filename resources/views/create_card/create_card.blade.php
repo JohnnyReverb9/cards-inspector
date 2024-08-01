@@ -11,7 +11,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/create_card" method="post" class="form-control-lg">
+                        <form action="{{ url("/create_card") }}" method="post" class="form-control-lg">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="col-md-8">
@@ -32,7 +33,7 @@
                                     <div class="col-md-10">
                                         <label for="alias" class="col-form-label" style="font-size: 14px">Кому оформляется пропуск</label>
                                         <input type="text" id="alias" name="alias" class="form-control-lg" placeholder="Член семьи, арендатор..."
-                                               style="width: 300px" required>
+                                               minlength="4" maxlength="100" style="width: 300px" required>
                                     </div>
                                     <div class="col-md-10">
                                         <label for="expiration" class="col-form-label" style="font-size: 14px">Дата окончания действия</label>
