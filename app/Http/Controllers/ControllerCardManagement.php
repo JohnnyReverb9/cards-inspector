@@ -21,7 +21,7 @@ class ControllerCardManagement extends Controller
         try {
             $validated_data = $request->validate([
                 "full_name" => "required|string|min:4|max:100",
-                "flat_num" => "required|numeric|min:0|max:561",
+                "flat_num" => "required|numeric|min:1|max:561",
                 "phone" => "required|string|min:18|max:18",
                 "alias" => "required|string|min:4|max:100",
                 // "expiration" => "nullable|date_format:Y-m-d",

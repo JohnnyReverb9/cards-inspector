@@ -35,7 +35,7 @@
                                     <div class="col-md-8">
                                         <label for="flat_num" class="col-form-label" style="font-size: 14px">Номер квартиры</label>
                                         <input type="number" id="flat_num" name="flat_num" class="form-control-lg"
-                                               placeholder="Введите номер квартиры" min="0" max="561" style="width: 300px" required value="{{ old('flat_num') }}">
+                                               placeholder="Введите номер квартиры" min="1" max="561" style="width: 300px" required value="{{ old('flat_num') }}">
                                         @error('flat_num')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('cards', function (Blueprint $table) {
-            $table->unsignedInteger("staff_add")->after("agreement");
+            $table->date("expiration")->nullable()->default(null)->change();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('cards', function (Blueprint $table) {
-            $table->dropColumn('staff_add');
+            $table->date("expiration")->change();
         });
     }
 };

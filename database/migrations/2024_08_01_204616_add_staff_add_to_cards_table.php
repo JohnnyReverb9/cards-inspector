@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('cards', function (Blueprint $table) {
-            $table->unsignedBigInteger("staff_add");
+            $table->unsignedBigInteger("staff_add")->after("passport");
         });
     }
 
