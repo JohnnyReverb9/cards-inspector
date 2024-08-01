@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Card;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -23,9 +24,14 @@ class ControllerCardManagement extends Controller
                 "flat_num" => "required|numeric|min:0|max:561",
                 "phone" => "required|string|min:18|max:18",
                 "alias" => "required|string|min:4|max:100",
-                "expiration" => "nullable|date",
+                "expiration" => "nullable|date_format:Y-m-d",
                 "passport" => "string|min:6|max:10"
             ]);
+
+            if ($request->has("expiration") && $request->input("expiration"))
+            {
+                $validated_data["expiration"] = Carbon::createFromFormat("d.m.Y", $request->input("expiration"))->format("Y-m-d");
+            }
 
             $additional_data = [
                 "staff_add" => Auth::user()->id
@@ -37,9 +43,13 @@ class ControllerCardManagement extends Controller
 
             return redirect('/view_cards')->with('success', 'Карта успешно создана');
         }
+        catch (\Illuminate\Database\QueryException $e)
+        {
+            return redirect()->back()->withInput()->withErrors(["error" => "Ошибка базы данных: " . $e->getMessage()]);
+        }
         catch (\Exception $e)
         {
-            Log::error($e->getMessage());
+            return redirect()->back()->withInput()->withErrors(["error" => "Произошла ошибка: " . $e->getMessage()]);
         }
     }
 
