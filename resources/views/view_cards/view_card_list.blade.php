@@ -9,7 +9,7 @@
                     <div class="card-header">{{ __("Список всех пропусков") }}</div>
                         <div class="card-body">
                         @forelse($card_list as $card)
-                            <div class="card" style="margin: 10px; position: relative; cursor: pointer;" onclick="window.location='{{ url('/view_card', $card->id) }}';">
+                            <div class="card card-in-list" style="margin: 10px; position: relative; cursor: pointer;" onclick="window.location='{{ url('/view_card', $card->id) }}';">
                                 <div class="card-body">
                                     <p><strong>Имя:</strong> {{ $card->full_name }}</p>
                                     <p><strong>Номер квартиры:</strong> {{ $card->flat_num }}</p>

@@ -20,6 +20,9 @@
 
     <!-- Icon -->
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 <body>
     <div id="app">
