@@ -25,7 +25,8 @@ Route::middleware(['auth'])->group(function ()
     Route::get("/create_card", [ControllerCardManagement::class, "createCardPage"]);
     Route::post("/create_card", [ControllerCardManagement::class, "createCard"]);
 
-    Route::get("/view_cards", [ControllerCardManagement::class, "viewCards"]);
+    Route::get("/view_cards", [ControllerCardManagement::class, "viewCardList"]);
+    Route::get("/view_card/{id}", [ControllerCardManagement::class, "viewCard"]);
 });
 
 Auth::routes();

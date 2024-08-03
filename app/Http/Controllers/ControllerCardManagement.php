@@ -54,11 +54,16 @@ class ControllerCardManagement extends Controller
         }
     }
 
-    public function viewCards()
+    public function viewCardList()
     {
         $card_list = Card::all();
         $users = ManagementUsers::getArrayMapUsers();
 
         return view("view_cards/view_card_list", ["card_list" => $card_list, "users" => $users]);
+    }
+
+    public function viewCard(Request $request)
+    {
+
     }
 }

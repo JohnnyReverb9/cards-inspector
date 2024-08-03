@@ -9,7 +9,7 @@ class ManagementUsers extends ManagementBase
 {
     private static $list_users = [];
 
-    private static function findUsers()
+    private static function findUsers(): void
     {
         self::$list_users = User::all();
     }
