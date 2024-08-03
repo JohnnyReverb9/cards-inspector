@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\classes\user\ManagementUsers;
 use App\Models\Admin;
 use App\Models\Card;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +57,8 @@ class ControllerCardManagement extends Controller
     public function viewCards()
     {
         $card_list = Card::all();
+        $users = ManagementUsers::getArrayMapUsers();
 
-        return view("view_cards/view_card_list", ["card_list" => $card_list]);
+        return view("view_cards/view_card_list", ["card_list" => $card_list, "users" => $users]);
     }
 }
