@@ -3,7 +3,7 @@
 @section("content")
     <div class="container">
         <div class="row justify-content-end">
-            <a href="{{ url("/home") }}" class="btn btn-primary" style="width: 150px">На главную</a>
+            <a href="{{ route("home") }}" class="btn btn-primary" style="width: 150px">На главную</a>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -23,7 +23,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ url("/create_card") }}" method="post" class="form-control-lg">
+                        <form action="{{ route("create_card_post") }}" method="post" class="form-control-lg">
                             @csrf
                             <div class="row">
                                 <div class="col-md-5">

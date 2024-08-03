@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row justify-content-end">
-            <a href="{{ url("/home") }}" class="btn btn-primary" style="width: 150px">На главную</a>
+            <a href="{{ route("home") }}" class="btn btn-primary" style="width: 150px">На главную</a>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">

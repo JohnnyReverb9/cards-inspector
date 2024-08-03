@@ -24,10 +24,10 @@
                             </div>
                             <div class="container">
                                 <div class="container m-md-3">
-                                    <a href="{{ url("/view_cards") }}" class="btn btn-primary" style="width: 250px">Показать созданные пропуска</a>
+                                    <a href="{{ route("view_cards") }}" class="btn btn-primary" style="width: 250px">Показать созданные пропуска</a>
                                 </div>
                                 <div class="container m-md-3">
-                                    <a href="{{ url("/create_card") }}" class="btn btn-primary" style="width: 250px">Создать пропуск</a>
+                                    <a href="{{ route("create_card") }}" class="btn btn-primary" style="width: 250px">Создать пропуск</a>
                                 </div>
                             </div>
                         </div>
