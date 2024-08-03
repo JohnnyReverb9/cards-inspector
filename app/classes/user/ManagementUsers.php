@@ -7,7 +7,7 @@ use App\Models\User;
 
 class ManagementUsers extends ManagementBase
 {
-    private static array $list_users = [];
+    private static $list_users = [];
 
     private static function findUsers()
     {

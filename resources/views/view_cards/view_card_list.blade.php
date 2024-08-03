@@ -17,7 +17,7 @@
                                     <p><strong>Псеводним:</strong> {{ $card->alias }}</p>
                                     <p><strong>Дата окончания:</strong>@if($card->expiration == null) Бессрочно @endif {{ $card->expiration }}</p>
                                     <p><strong>Паспорт / свидетельство о рождении:</strong> {{ $card->passport }}</p>
-                                    <p><strong>Добавил сотрудник:</strong> {{ $card->staff_add }}</p>
+                                    <p><strong>Добавил сотрудник:</strong> {{ $users[$card->staff_add]->name . " (ID: " . $card->staff_add . "; email: " . $users[$card->staff_add]->email . ")" }}</p>
                                 </div>
                             </div>
                         @empty
