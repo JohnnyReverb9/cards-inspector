@@ -23,12 +23,15 @@
                             <input id="user_name" name="user_name" type="text" class="form-control profile-input" value="{{ $user->name }}" readonly>
                             <label for="user_email" class="col-form-label-lg">Email сотрудника:</label>
                             <input id="user_email" name="user_email" type="text" class="form-control profile-input" value="{{ $user->email }}" readonly>
-                            <label for="user_email" class="col-form-label-lg">Пароль сотрудника:</label>
-                            <input id="user_email" name="user_email" type="password" class="form-control profile-input-pass" value="**********" readonly>
-                            <div class="col-md-12 text-center" style="width: fit-content">
-                                <br>
-                                <a href="#" class="btn btn-danger">Изменить пароль</a>
-                            </div>
+                            @if($user->id == Auth::user()->id)
+                            <label for="user_pass" class="col-form-label-lg">Пароль сотрудника:</label>
+                            <input id="user_pass" name="user_pass" type="password" class="form-control profile-input-pass" value="**********" readonly>
+
+                                <div class="col-md-12 text-center" style="width: fit-content">
+                                    <br>
+                                    <a href="#" class="btn btn-danger">Изменить пароль</a>
+                                </div>
+                            @endif
                         </div>
                         <div class="col-md-4 position-relative profile-avatar">
                             <img src="{{ asset("assets/images/avatar.png") }}" alt="avatar.png" width="200" height="auto">
