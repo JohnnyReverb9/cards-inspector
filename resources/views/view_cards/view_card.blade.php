@@ -39,4 +39,32 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('.profile-input').click(function() {
+                $(this).select();
+                document.execCommand("copy");
+                let notification = $('<div>Значение скопировано</div>');
+                notification.css({
+                    position: 'fixed',
+                    bottom: '20px',
+                    right: '20px',
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    color: '#fff',
+                    padding: '10px 20px',
+                    borderRadius: '5px',
+                    zIndex: '1000',
+                    opacity: '1',
+                    transition: 'opacity 1s ease-in-out'
+                });
+                $('body').append(notification);
+                setTimeout(function() {
+                    notification.css('opacity', '0');
+                    setTimeout(function() {
+                        notification.remove();
+                    }, 1000);
+                }, 1000);
+            });
+        });
+    </script>
 @endsection
