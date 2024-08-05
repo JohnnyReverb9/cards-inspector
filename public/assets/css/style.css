@@ -1,3 +1,37 @@
 .card-in-list:hover {
     background-color: rgba(33, 37, 41, 0.03);
 }
+
+.profile-input {
+    width: 400px;
+    font-size: 1.125rem;
+    /*user-select: none;*/
+    outline-offset: 0 !important;
+    outline: none !important;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.profile-input:focus {
+    outline: none !important;
+    outline-offset: 0 !important;
+}
+
+.profile-label:focus {
+    outline: none !important;
+    outline-offset: 0 !important;
+}
+
+.profile-card {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    input {
+        outline: none !important;
+    }
+}
+
+.profile-avatar {
+    margin-top: 60px;
+    margin-right: 40px;
+}
+
