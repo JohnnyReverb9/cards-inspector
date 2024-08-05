@@ -64,6 +64,6 @@ class ControllerCardManagement extends Controller
 
     public function viewCard(Request $request)
     {
-
+        echo $request->id;
     }
 }

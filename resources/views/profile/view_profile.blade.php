@@ -8,30 +8,36 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __("Профиль") }}</div>
-                        <div class="row">
-                            <div class="card-body profile-card col-md-2">
-                                <label for="user_id" class="col-form-label-lg profile-label">ID сотрудника:</label>
-                                <input id="user_id" name="user_id" type="text" class="form-control profile-input" value="{{ $user->id }}" readonly>
-                                <label for="user_name" class="col-form-label-lg">Имя сотрудника:</label>
-                                <input id="user_name" name="user_name" type="text" class="form-control profile-input" value="{{ $user->name }}" readonly>
-                                <label for="user_email" class="col-form-label-lg">Email сотрудника:</label>
-                                <input id="user_email" name="user_email" type="text" class="form-control profile-input" value="{{ $user->email }}" readonly>
-                                <label for="user_email" class="col-form-label-lg">Пароль сотрудника:</label>
-                                <input id="user_email" name="user_email" type="password" class="form-control profile-input-pass" value="**********" readonly>
-                                <div class="col-md-12 text-center" style="width: fit-content">
-                                    <br>
-                                    <a href="#" class="btn btn-danger">Изменить пароль</a>
-                                </div>
+                    <div class="card-header">
+                        @if($user->id == Auth::user()->id)
+                            {{ __("Профиль") }}
+                        @else
+                            {{ __("Профиль пользователя №" . $user->id) }}
+                        @endif
+                    </div>
+                    <div class="row">
+                        <div class="card-body profile-card col-md-2">
+                            <label for="user_id" class="col-form-label-lg profile-label">ID сотрудника:</label>
+                            <input id="user_id" name="user_id" type="text" class="form-control profile-input" value="{{ $user->id }}" readonly>
+                            <label for="user_name" class="col-form-label-lg">Имя сотрудника:</label>
+                            <input id="user_name" name="user_name" type="text" class="form-control profile-input" value="{{ $user->name }}" readonly>
+                            <label for="user_email" class="col-form-label-lg">Email сотрудника:</label>
+                            <input id="user_email" name="user_email" type="text" class="form-control profile-input" value="{{ $user->email }}" readonly>
+                            <label for="user_email" class="col-form-label-lg">Пароль сотрудника:</label>
+                            <input id="user_email" name="user_email" type="password" class="form-control profile-input-pass" value="**********" readonly>
+                            <div class="col-md-12 text-center" style="width: fit-content">
+                                <br>
+                                <a href="#" class="btn btn-danger">Изменить пароль</a>
                             </div>
-                            <div class="col-md-4 position-relative profile-avatar">
-                                <img src="{{ asset("assets/images/avatar.png") }}" alt="avatar.png" width="200" height="auto">
-                            </div>
+                        </div>
+                        <div class="col-md-4 position-relative profile-avatar">
+                            <img src="{{ asset("assets/images/avatar.png") }}" alt="avatar.png" width="200" height="auto">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <script>
         $(document).ready(function() {
             $('.profile-input').click(function() {

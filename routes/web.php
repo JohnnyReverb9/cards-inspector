@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function ()
     Route::get("/view_card/{id}", [ControllerCardManagement::class, "viewCard"])->name("view_card");
 
     Route::get("/profile", [ControllerProfile::class, "index"])->name("profile");
+    Route::get("/user_profile/{id}", [ControllerProfile::class, "userProfile"])->name("user_profile");
 });
 
 Auth::routes();

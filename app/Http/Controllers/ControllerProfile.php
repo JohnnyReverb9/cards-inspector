@@ -16,4 +16,23 @@ class ControllerProfile extends Controller
 
         return view("profile/view_profile", compact("user"));
     }
+
+    public function userProfile(Request $request)
+    {
+        try
+        {
+            $id = $request->id;
+
+            $user = User::find($id);
+
+            // dd($user);
+
+            return view("profile/view_profile", compact("user"));
+        }
+        catch (\Exception $e)
+        {
+            // TODO: добавить обработку
+            echo $e->getMessage();
+        }
+    }
 }
