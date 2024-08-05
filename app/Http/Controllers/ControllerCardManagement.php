@@ -64,6 +64,22 @@ class ControllerCardManagement extends Controller
 
     public function viewCard(Request $request)
     {
-        echo $request->id;
+        try
+        {
+            $card_id = $request->id;
+
+            $card = Card::find($card_id);
+            $users = ManagementUsers::getArrayMapUsers();
+
+            return view("view_cards/view_card", ["card" => $card, "users" => $users]);
+        }
+        catch (\Illuminate\Database\QueryException $e)
+        {
+            return "Карта №" . $card_id . "не найдена";
+        }
+        catch (\Exception $e)
+        {
+            return "Error: " . $e->getMessage();
+        }
     }
 }

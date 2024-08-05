@@ -26,7 +26,6 @@
                             @if($user->id == Auth::user()->id)
                             <label for="user_pass" class="col-form-label-lg">Пароль сотрудника:</label>
                             <input id="user_pass" name="user_pass" type="password" class="form-control profile-input-pass" value="**********" readonly>
-
                                 <div class="col-md-12 text-center" style="width: fit-content">
                                     <br>
                                     <a href="#" class="btn btn-danger">Изменить пароль</a>

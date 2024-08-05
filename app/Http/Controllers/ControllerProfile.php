@@ -25,8 +25,6 @@ class ControllerProfile extends Controller
 
             $user = User::find($id);
 
-            // dd($user);
-
             return view("profile/view_profile", compact("user"));
         }
         catch (\Exception $e)
