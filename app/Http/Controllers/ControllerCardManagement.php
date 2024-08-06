@@ -74,6 +74,12 @@ class ControllerCardManagement extends Controller
             $card_id = $request->id;
 
             $card = Card::find($card_id);
+
+            if (is_null($card))
+            {
+                return redirect("/view_cards")->withErrors(["error" => "Карта №" . $card_id . " не найдена"]);
+            }
+
             $users = ManagementUsers::getArrayMapUsers();
 
             return view("view_cards/view_card", ["card" => $card, "users" => $users]);
