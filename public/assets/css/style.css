@@ -49,3 +49,11 @@
     margin-top: 60px;
     margin-right: 70px;
 }
+
+.other_input {
+    margin-top: 10px;
+}
+
+.form-custom-selector {
+    border: 2px solid rgb(118, 118, 118);
+}

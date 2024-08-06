@@ -53,8 +53,18 @@
                                     </div>
                                     <div class="col-md-10">
                                         <label for="alias" class="col-form-label" style="font-size: 14px">Кому оформляется пропуск</label>
-                                        <input type="text" id="alias" name="alias" class="form-control-lg" placeholder="Член семьи, арендатор..."
-                                               minlength="4" maxlength="100" style="width: 300px" required value="{{ old('alias') }}">
+                                        <select name="alias" id="alias" style="width: 300px" class="form-control-lg form-custom-selector" required>
+                                            <option value="">Выберите из списка</option>
+                                            <option value="Член семьи">Член семьи</option>
+                                            <option value="Арендатор">Арендатор</option>
+                                            <option value="Представитель">Представитель</option>
+                                            <option value="Персонал">Персонал</option>
+                                            <option value="Сотрудник рабочей бригады">Сотрудник рабочей бригады</option>
+                                            <option value="Другое">Другое</option>
+                                        </select>
+                                        <div id="other_input_container" class="col-md-10" style="display:none;">
+                                            <input type="text" id="other_alias" name="other_alias" class="form-control-lg other_input" placeholder="Укажите самостоятельно" minlength="4" maxlength="100" style="width: 300px" required>
+                                        </div>
                                         @error('alias')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -101,6 +111,16 @@
                 "alias": "expiration",
                 "yearrange": { minyear: 2024, maxyear: 3000 }
             });
+
+            $('#alias').on('change', function() {
+                if (this.value === 'Другое') {
+                    $('#other_input_container').show();
+                    $('#other_alias').attr('required', true);
+                } else {
+                    $('#other_input_container').hide();
+                    $('#other_alias').removeAttr('required');
+                }
+            });
         });
-    </script>
-@endsection
+        </script>
+    @endsection

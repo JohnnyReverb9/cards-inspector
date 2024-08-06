@@ -34,6 +34,11 @@ class ControllerCardManagement extends Controller
                 $validated_data["expiration"] = Carbon::createFromFormat("d.m.Y", $request->input("expiration"))->format("Y-m-d");
             }
 
+            if ($request->has("other_alias") && $request->get("other_alias") != "" && $request->get("alias") == "Другое")
+            {
+                $validated_data["alias"] = $request->get("other_alias");
+            }
+
             $additional_data = [
                 "staff_add" => Auth::user()->id
             ];
