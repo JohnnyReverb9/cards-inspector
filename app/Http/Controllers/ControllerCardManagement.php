@@ -47,7 +47,7 @@ class ControllerCardManagement extends Controller
 
             $card = Card::create($res);
 
-            return redirect("/view_cards")->with("success", "Карта №" . $card->id . " успешно создана.");
+            return redirect()->route("view_cards")->with("success", "Карта №" . $card->id . " успешно создана.");
         }
         catch (\Illuminate\Database\QueryException $e)
         {
@@ -72,12 +72,11 @@ class ControllerCardManagement extends Controller
         try
         {
             $card_id = $request->id;
-
             $card = Card::find($card_id);
 
             if (is_null($card))
             {
-                return redirect("/view_cards")->withErrors(["error" => "Карта №" . $card_id . " не найдена"]);
+                return redirect()->route("view_cards")->withErrors(["error" => "Карта №" . $card_id . " не найдена"]);
             }
 
             $users = ManagementUsers::getArrayMapUsers();
@@ -103,16 +102,16 @@ class ControllerCardManagement extends Controller
 
             if (is_null($card))
             {
-                return redirect("/view_cards")->withErrors(["error" => "Карта №" . $card_id . " не найдена"]);
+                return redirect()->route("view_cards")->withErrors(["error" => "Карта №" . $card_id . " не найдена"]);
             }
 
             $card->delete();
 
-            return redirect("/view_cards")->with("success", "Card deleted successfully.");
+            return redirect()->route("view_cards")->with("success", "Карта №$card_id успешно удалена.");
         }
         catch (\Exception $e)
         {
-            return redirect("view_cards")->withErrors(["error" => "Произошла ошибка: " . $e->getMessage()]);
+            return redirect()->route("view_cards")->withErrors(["error" => "Произошла ошибка: " . $e->getMessage()]);
         }
     }
 }

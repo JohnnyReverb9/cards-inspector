@@ -17,6 +17,13 @@
                         </ul>
                     </div>
                 @endif
+                @if (session("success"))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{{ session("success") }}</li>
+                        </ul>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">{{ __("Список всех пропусков") }}</div>
                         <div class="card-body">

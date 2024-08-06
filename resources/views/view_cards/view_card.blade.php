@@ -8,10 +8,17 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if (session("success"))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{{ session("success") }}</li>
+                        </ul>
+                    </div>
+                @endif
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach ($errors->all() as $error)
+                        @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
