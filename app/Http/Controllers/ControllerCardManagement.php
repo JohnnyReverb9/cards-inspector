@@ -87,4 +87,26 @@ class ControllerCardManagement extends Controller
             return "Error: " . $e->getMessage();
         }
     }
+
+    public function deleteCard(Request $request)
+    {
+        try
+        {
+            $card_id = $request->id;
+            $card = Card::find($card_id);
+
+            if (is_null($card))
+            {
+                return redirect("/view_cards")->withErrors(["error" => "Карта №" . $card_id . " не найдена"]);
+            }
+
+            $card->delete();
+
+            return redirect("/view_cards")->with("success", "Card deleted successfully.");
+        }
+        catch (\Exception $e)
+        {
+            return redirect("view_cards")->withErrors(["error" => "Произошла ошибка: " . $e->getMessage()]);
+        }
+    }
 }

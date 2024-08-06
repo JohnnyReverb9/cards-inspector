@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function ()
 
     Route::get("/profile", [ControllerProfile::class, "index"])->name("profile");
     Route::get("/user_profile/{id}", [ControllerProfile::class, "userProfile"])->name("user_profile");
+
+    Route::get("/delete_card/{id}", [ControllerCardManagement::class, "deleteCard"])->name("delete_card");
 });
 
 Auth::routes();

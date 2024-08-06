@@ -8,6 +8,15 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
                         {{ __("Постоянный пропуск №" . $card->id . "- квартира №" . $card->flat_num) }}
@@ -30,6 +39,10 @@
                             <input id="passport" name="passport" type="text" class="form-control profile-input" value="{{ $card->passport }}" readonly>
                             <label for="staff_add" class="col-form-label-lg">Добавил сотрудник:</label>
                             <input id="staff_add" name="staff_add" type="text" class="form-control profile-input" value="{{ $users[$card->staff_add]->name . " (ID: " . $users[$card->staff_add]->id . "; email: " . $users[$card->staff_add]->email . ")" }}" readonly>
+                            <div class="col-md-12 text-center" style="width: fit-content">
+                                <br>
+                                <a href="{{ url("/delete_card", $card->id) }}" type="delete" class="btn btn-danger">Аннулировать пропуск</a>
+                            </div>
                         </div>
                         <div class="col-md-4 position-relative view-card-avatar">
                             <img src="{{ asset("assets/images/view_access_card.png") }}" alt="avatar.png" width="300" height="auto">
