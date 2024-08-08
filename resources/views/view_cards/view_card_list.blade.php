@@ -3,7 +3,13 @@
 @section("content")
 
     <div class="container">
-        <div class="row justify-content-end">
+        <div class="row justify-content-end" style="margin-bottom: 15px;">
+            <div class="col-md-7" style="padding-left: 77px;">
+                <input type="text" id="search_cards" name="search_cards" class="form-control" placeholder="ID, ФИО, номер квартиры...">
+            </div>
+            <div class="col-md-2"  style="margin-right: 25px;">
+                <a href="" class="btn btn-primary" style="width: 150px;">Поиск</a>
+            </div>
             <a href="{{ route("home") }}" class="btn btn-primary" style="width: 150px">На главную</a>
         </div>
         <div class="row justify-content-center">
@@ -27,9 +33,6 @@
                 <div class="card">
                     <div class="card-header">
                         {{ __("Список всех пропусков") }}
-{{--                        <div class="col-md-8">--}}
-{{--                            <input type="text" class="form-control" placeholder="ID, ФИО, номер квартиры...">--}}
-{{--                        </div>--}}
                     </div>
                         <div class="card-body">
                         @forelse($card_list as $card)
