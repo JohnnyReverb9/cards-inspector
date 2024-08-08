@@ -8,7 +8,7 @@
                 <input type="text" id="search_cards" name="search_cards" class="form-control" placeholder="ID, ФИО, номер квартиры...">
             </div>
             <div class="col-md-2"  style="margin-right: 25px;">
-                <a href="" class="btn btn-primary" style="width: 150px;">Поиск</a>
+                <button id="search_button" class="btn btn-primary" style="width: 150px;">Поиск</button>
             </div>
             <a href="{{ route("home") }}" class="btn btn-primary" style="width: 150px">На главную</a>
         </div>
@@ -34,26 +34,39 @@
                     <div class="card-header">
                         {{ __("Список всех пропусков") }}
                     </div>
-                        <div class="card-body">
-                        @forelse($card_list as $card)
-                            <div class="card card-in-list" style="margin: 10px; position: relative; cursor: pointer;" onclick="window.location='{{ url('/view_card', $card->id) }}';">
-                                <div class="card-body">
-                                    <p><strong>ID:</strong> {{ $card->id }}</p>
-                                    <p><strong>ФИО:</strong> {{ $card->full_name }}</p>
-                                    <p><strong>Номер квартиры:</strong> {{ $card->flat_num }}</p>
-                                    <p><strong>Дата окончания:</strong>@if($card->expiration == null) Бессрочно @endif {{ $card->expiration }}</p>
-                                    <p><strong>Добавил сотрудник:</strong> <a style="color: inherit;" href="{{ url('/user_profile/' . $card->staff_add) }}">{{ $users[$card->staff_add]->name . " (email: " . $users[$card->staff_add]->email . ")" }}</a></p>
-                                </div>
-                            </div>
-                        @empty
-                        </div>
-                        <div class="card-body">
-                            {{ __("Нет данных для отображения") }}
-                        </div>
-                    @endforelse
+                    <div class="card-body" id="search_results">
+                        @include('view_cards/search/view_card_list_content', ["card_list" => $card_list, "users" => $users])
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            function search() {
+                var query = $('#search_cards').val();
+                $.ajax({
+                    url: '{{ route("view_cards") }}',
+                    type: 'GET',
+                    data: { search: query },
+                    success: function(response) {
+                        $('#search_results').html(response.html);
+                    }
+                });
+            }
+
+            $('#search_button').on('click', function(e) {
+                e.preventDefault();
+                search();
+            });
+
+            $('#search_cards').on('keypress', function(e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    search();
+                }
+            });
+        });
+    </script>
 
 @endsection

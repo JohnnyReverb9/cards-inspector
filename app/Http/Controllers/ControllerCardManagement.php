@@ -59,10 +59,30 @@ class ControllerCardManagement extends Controller
         }
     }
 
-    public function viewCardList()
+    public function viewCardList(Request $request)
     {
-        $card_list = Card::all();
+        $query = $request->input('search');
+
+        if ($query)
+        {
+            $card_list = Card::where('id', 'LIKE', "%$query%")
+                ->orWhere('full_name', 'LIKE', "%$query%")
+                ->orWhere('flat_num', 'LIKE', "%$query%")
+                ->get();
+        }
+        else
+        {
+            $card_list = Card::all();
+        }
+
         $users = ManagementUsers::getArrayMapUsers();
+
+        if ($request->ajax())
+        {
+            return response()->json([
+                'html' => view("view_cards/search/view_card_list_content", ["card_list" => $card_list, "users" => $users])->render()
+            ]);
+        }
 
         return view("view_cards/view_card_list", ["card_list" => $card_list, "users" => $users]);
     }
