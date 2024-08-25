@@ -68,11 +68,11 @@ class ControllerCardManagement extends Controller
             $card_list = Card::where('id', 'LIKE', "%$query%")
                 ->orWhere('full_name', 'LIKE', "%$query%")
                 ->orWhere('flat_num', 'LIKE', "%$query%")
-                ->get();
+                ->paginate(10);
         }
         else
         {
-            $card_list = Card::all();
+            $card_list = Card::paginate(10);
         }
 
         $users = ManagementUsers::getArrayMapUsers();
@@ -80,7 +80,7 @@ class ControllerCardManagement extends Controller
         if ($request->ajax())
         {
             return response()->json([
-                'html' => view("view_cards/search/view_card_list_content", ["card_list" => $card_list, "users" => $users])->render()
+                "html" => view("view_cards/search/view_card_list_content", ["card_list" => $card_list, "users" => $users])->render()
             ]);
         }
 

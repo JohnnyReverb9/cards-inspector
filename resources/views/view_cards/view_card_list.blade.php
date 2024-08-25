@@ -43,12 +43,18 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
-            function search() {
+            $(document).on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                search(page);
+            });
+
+            function search(page = 1) {
                 var query = $('#search_cards').val();
                 $.ajax({
                     url: '{{ route("view_cards") }}',
                     type: 'GET',
-                    data: { search: query },
+                    data: { search: query, page: page },
                     success: function(response) {
                         $('#search_results').html(response.html);
                     }
