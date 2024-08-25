@@ -68,11 +68,11 @@ class ControllerCardManagement extends Controller
             $card_list = Card::where('id', 'LIKE', "%$query%")
                 ->orWhere('full_name', 'LIKE', "%$query%")
                 ->orWhere('flat_num', 'LIKE', "%$query%")
-                ->paginate(10);
+                ->paginate(5);
         }
         else
         {
-            $card_list = Card::paginate(10);
+            $card_list = Card::paginate(5);
         }
 
         $users = ManagementUsers::getArrayMapUsers();
